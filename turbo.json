@@ -56,7 +56,8 @@
     "AUTH_SECRET",
     "PORT",
     "SERVER_PORT",
-    "BACKEND_BASE_URL"
+    "BACKEND_BASE_URL",
+    "JWT_SECRET_KEY"
   ],
   "globalPassThroughEnv": [
     "NODE_ENV",
