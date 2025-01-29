@@ -1,4 +1,3 @@
-import type { TRPCRouterRecord } from "@trpc/server";
 import { verify } from "@node-rs/argon2";
 import { TRPCError } from "@trpc/server";
 
@@ -6,9 +5,9 @@ import { encrypt } from "@rizrmdhn/auth";
 import { getUserByUsername } from "@rizrmdhn/queries/users.queries";
 import { loginSchema } from "@rizrmdhn/validators/auth.schema";
 
-import { protectedProcedure, publicProcedure } from "../trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
-export const authRouter: TRPCRouterRecord = {
+export const authRouter = createTRPCRouter({
   login: publicProcedure
     .input(loginSchema)
     .mutation(async ({ input: { username, password } }) => {
@@ -50,4 +49,4 @@ export const authRouter: TRPCRouterRecord = {
   me: protectedProcedure.query(({ ctx }) => {
     return ctx.user;
   }),
-};
+});

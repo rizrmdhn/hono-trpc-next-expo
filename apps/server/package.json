@@ -3,11 +3,11 @@
   "type": "module",
   "scripts": {
     "clean": "git clean -xdf .cache .dist .turbo node_modules",
-    "dev": "pnpm with-env tsx watch src/index.ts",
+    "dev": "pnpm with-env tsx watch src/index.server.ts",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "sort:package": "pnpm dlx sort-package-json",
-    "start": "pnpm with-env tsx start src/index.ts",
+    "start": "pnpm with-env tsx start src/index.server.ts",
     "typecheck": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --"
   },

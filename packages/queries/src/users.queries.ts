@@ -1,5 +1,3 @@
-import "server-only";
-
 import { eq } from "drizzle-orm";
 
 import { db } from "@rizrmdhn/db/client";
