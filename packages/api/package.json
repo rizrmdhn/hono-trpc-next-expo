@@ -1,7 +1,8 @@
 {
   "name": "@rizrmdhn/api",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
   "type": "module",
   "exports": {
     ".": {
@@ -9,15 +10,20 @@
       "default": "./src/index.ts"
     }
   },
-  "license": "MIT",
   "scripts": {
     "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "sort:package": "pnpm dlx sort-package-json"
+    "sort:package": "pnpm dlx sort-package-json",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "prettier": "@rizrmdhn/prettier-config",
+  "dependencies": {
+    "@trpc/server": "catalog:",
+    "superjson": "^2.2.2",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@rizrmdhn/eslint-config": "workspace:*",
@@ -27,11 +33,5 @@
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
-  },
-  "prettier": "@rizrmdhn/prettier-config",
-  "dependencies": {
-    "@trpc/server": "catalog:",
-    "superjson": "^2.2.2",
-    "zod": "catalog:"
   }
 }

@@ -1,7 +1,8 @@
 {
   "name": "@rizrmdhn/db",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
   "type": "module",
   "exports": {
     ".": {
@@ -17,7 +18,6 @@
       "default": "./src/schema.ts"
     }
   },
-  "license": "MIT",
   "scripts": {
     "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
@@ -30,18 +30,20 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "with-env": "dotenv -e ../../.env --"
   },
-  "devDependencies": {
-    "@rizrmdhn/eslint-config": "workspace:*",
-    "@rizrmdhn/prettier-config": "workspace:*",
-    "@rizrmdhn/tsconfig": "workspace:*",
-    "dotenv-cli": "^8.0.0",
-    "eslint": "catalog:",
-    "prettier": "catalog:",
-    "typescript": "catalog:"
-  },
   "prettier": "@rizrmdhn/prettier-config",
   "dependencies": {
     "drizzle-orm": "^0.39.0",
     "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "@rizrmdhn/eslint-config": "workspace:*",
+    "@rizrmdhn/prettier-config": "workspace:*",
+    "@rizrmdhn/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
+    "dotenv-cli": "^8.0.0",
+    "drizzle-kit": "^0.30.3",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
   }
 }
