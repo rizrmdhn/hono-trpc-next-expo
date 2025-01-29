@@ -1,16 +1,57 @@
-import { serve } from '@hono/node-server'
-import { Hono } from 'hono'
+import { serve } from "@hono/node-server";
+import { trpcServer } from "@hono/trpc-server";
+import { Hono } from "hono";
+import { cors } from "hono/cors";
 
-const app = new Hono()
+import { appRouter } from "@rizrmdhn/api";
+import { env } from "../env.js";
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+const app = new Hono();
 
-const port = 3000
-console.log(`Server is running on http://localhost:${port}`)
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
-serve({
+app.get("/", (c) => {
+  return c.text("Hello Hono!");
+});
+
+app.use(
+  "/trpc/*",
+  trpcServer({
+    router: appRouter,
+    createContext: (c) => ({
+      req: c.req,
+      headers: Object.fromEntries(c.req.headers.entries()),
+      context: c,
+    }),
+  })
+);
+
+const port = env.SERVER_PORT;
+console.log(`Server is running on http://localhost:${port}`);
+
+const server = serve({
   fetch: app.fetch,
-  port
-})
+  port,
+});
+
+// Graceful shutdown handling
+const shutdown = async () => {
+  console.log("\nReceived shutdown signal. Closing server...");
+
+  try {
+    server.close();
+    console.log("Server closed successfully");
+    process.exit(0);
+  } catch (err) {
+    console.error("Error during shutdown:", err);
+    process.exit(1);
+  }
+};
+
+// Listen for interrupt signals
+process.on("SIGTERM", shutdown);
+process.on("SIGINT", shutdown);
