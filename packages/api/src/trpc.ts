@@ -7,10 +7,11 @@
  * The pieces you will need to use are documented accordingly near the end
  */
 
-import { initTRPC } from "@trpc/server";
+import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
+import { validateSessionToken } from "@rizrmdhn/auth/utils";
 import { db } from "@rizrmdhn/db/client";
 
 /**
@@ -18,11 +19,33 @@ import { db } from "@rizrmdhn/db/client";
  * - Expo requests will have a session token in the Authorization header
  * - Next.js requests will have a session token in cookies
  */
-const isomorphicGetSession = (headers: Headers) => {
+const isomorphicGetSession = async (headers: Headers) => {
+  // First try Authorization header
   const authToken = headers.get("Authorization") ?? null;
-  if (!authToken) {
-    return null;
+  if (authToken) {
+    const sessionToken = authToken.split(" ")[1];
+    if (sessionToken) {
+      const { session, user } = await validateSessionToken(sessionToken);
+      return { session, user };
+    }
   }
+
+  // Then try cookie
+  const cookieHeader = headers.get("Cookie") ?? null;
+  if (cookieHeader) {
+    const sessionToken = cookieHeader
+      .split(";")
+      .map((c) => c.trim())
+      .find((c) => c.startsWith("session="))
+      ?.split("=")[1];
+
+    if (sessionToken) {
+      const { session, user } = await validateSessionToken(sessionToken);
+      return { session, user };
+    }
+  }
+
+  return null;
 };
 
 /**
@@ -37,9 +60,9 @@ const isomorphicGetSession = (headers: Headers) => {
  *
  * @see https://trpc.io/docs/server/context
  */
-export const createTRPCContext = (opts: { headers: Headers }) => {
+export const createTRPCContext = async (opts: { headers: Headers }) => {
   const authToken = opts.headers.get("Authorization") ?? null;
-  const session = isomorphicGetSession(opts.headers);
+  const session = await isomorphicGetSession(opts.headers);
 
   return {
     session,
@@ -126,13 +149,14 @@ export const publicProcedure = t.procedure.use(timingMiddleware);
  */
 export const protectedProcedure = t.procedure
   .use(timingMiddleware)
-  .use(({ next }) => {
-    // if (!ctx.session?.user) {
-    //   throw new TRPCError({ code: "UNAUTHORIZED" });
-    // }
+  .use(({ ctx, next }) => {
+    if (!ctx.session?.user) {
+      throw new TRPCError({ code: "UNAUTHORIZED" });
+    }
     return next({
       ctx: {
-        // infers the `session` as non-nullable
+        ...ctx,
+        user: ctx.session.user,
       },
     });
   });

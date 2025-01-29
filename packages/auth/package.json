@@ -5,7 +5,11 @@
   "license": "MIT",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./session": "./src/session.ts",
+    "./utils": "./src/utils.ts"
   },
   "scripts": {
     "build": "tsc",
@@ -18,12 +22,18 @@
   },
   "prettier": "@rizrmdhn/prettier-config",
   "dependencies": {
-    "jose": "^5.9.6"
+    "@t3-oss/env-nextjs": "^0.12.0",
+    "jose": "^5.9.6",
+    "next": "15.1.6",
+    "react": "catalog:react19",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@rizrmdhn/eslint-config": "workspace:*",
     "@rizrmdhn/prettier-config": "workspace:*",
     "@rizrmdhn/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:react19",
     "dotenv-cli": "^8.0.0",
     "eslint": "catalog:",
     "prettier": "catalog:",
