@@ -21,8 +21,10 @@
   },
   "prettier": "@rizrmdhn/prettier-config",
   "dependencies": {
+    "@node-rs/argon2": "^2.0.2",
     "@rizrmdhn/auth": "workspace:*",
     "@rizrmdhn/db": "workspace:*",
+    "@rizrmdhn/queries": "workspace:*",
     "@rizrmdhn/validators": "workspace:*",
     "@trpc/server": "catalog:",
     "superjson": "^2.2.2",
