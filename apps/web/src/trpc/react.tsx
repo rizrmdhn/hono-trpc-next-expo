@@ -61,7 +61,7 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
           },
           true: httpBatchLink({
             transformer: SuperJSON,
-            url: getBaseUrl() + "/api/trpc",
+            url: getBaseUrl() + "/trpc",
             headers: () => {
               const headers = new Headers();
               headers.set("x-trpc-source", "nextjs-react");
@@ -70,7 +70,7 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
           }),
           false: unstable_httpBatchStreamLink({
             transformer: SuperJSON,
-            url: getBaseUrl() + "/api/trpc",
+            url: getBaseUrl() + "/trpc",
             headers: () => {
               const headers = new Headers();
               headers.set("x-trpc-source", "nextjs-react");
@@ -95,6 +95,6 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
 }
 
 function getBaseUrl() {
-  if (typeof window !== "undefined") return env.BACKEND_BASE_URL;
-  return env.BACKEND_BASE_URL;
+  if (typeof window !== "undefined") return env.NEXT_PUBLIC_BACKEND_BASE_URL;
+  return env.NEXT_PUBLIC_BACKEND_BASE_URL;
 }
