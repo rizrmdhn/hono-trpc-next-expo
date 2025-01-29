@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@rizrmdhn/ui/card";
 import { Input } from "@rizrmdhn/ui/input";
-import { loginSchema } from "@rizrmdhn/validators/auth.schema";
+import { registerSchema } from "@rizrmdhn/validators/auth.schema";
 import { useState } from "react";
 import type { z } from "zod";
 import {
@@ -26,20 +26,17 @@ import { globalErrorToast, globalSuccessToast } from "@rizrmdhn/ui/toast-utils";
 import { api } from "@/trpc/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Cookies from "js-cookie";
 
-export default function LoginForm() {
+export default function RegisterForm() {
   const [type, setType] = useState<"text" | "password">("password");
 
   const router = useRouter();
 
-  const { mutate, status } = api.auth.login.useMutation({
-    onSuccess: (data) => {
-      globalSuccessToast("Login success");
+  const { mutate, status } = api.auth.register.useMutation({
+    onSuccess: () => {
+      globalSuccessToast("Register success");
 
-      Cookies.set("token", data.token);
-
-      router.push(`/dashboard`);
+      router.push(`/sign-in`);
     },
     onError: (error) => {
       globalErrorToast(error.message);
@@ -47,23 +44,23 @@ export default function LoginForm() {
   });
 
   const form = useForm({
-    schema: loginSchema,
+    schema: registerSchema,
     defaultValues: {
       username: "",
       password: "",
     },
   });
 
-  function handleSubmit(data: z.infer<typeof loginSchema>) {
+  function handleSubmit(data: z.infer<typeof registerSchema>) {
     mutate(data);
   }
 
   return (
     <Card className="mx-auto max-w-sm">
       <CardHeader>
-        <CardTitle className="text-2xl">Login</CardTitle>
+        <CardTitle className="text-2xl">Register</CardTitle>
         <CardDescription>
-          Enter your username below to login to your account
+          Enter your username below to register to your account
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -128,15 +125,15 @@ export default function LoginForm() {
               {status === "pending" ? (
                 <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
               ) : null}
-              Sign In
+              Sign Up
             </Button>
           </form>
         </Form>
         <div className="mt-4 text-center">
           <h1 className="text-sm">
-            Don't have an account?{" "}
-            <Link href="/sign-up" className="hover:underline">
-              Sign up
+            Already have an account?{" "}
+            <Link href="/sign-in" className="hover:underline">
+              Sign in
             </Link>
           </h1>
         </div>

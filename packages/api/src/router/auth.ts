@@ -1,9 +1,9 @@
-import { verify } from "@node-rs/argon2";
+import { hash, verify } from "@node-rs/argon2";
 import { TRPCError } from "@trpc/server";
 
 import { encrypt } from "@rizrmdhn/auth";
-import { getUserByUsername } from "@rizrmdhn/queries/users.queries";
-import { loginSchema } from "@rizrmdhn/validators/auth.schema";
+import { createUser, getUserByUsername } from "@rizrmdhn/queries/users.queries";
+import { loginSchema, registerSchema } from "@rizrmdhn/validators/auth.schema";
 
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
@@ -44,6 +44,25 @@ export const authRouter = createTRPCRouter({
         token,
         user,
       };
+    }),
+
+  register: publicProcedure
+    .input(registerSchema)
+    .mutation(async ({ input: { username, password } }) => {
+      const user = await getUserByUsername(username);
+
+      if (user) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "Username already exists",
+        });
+      }
+
+      const hashedPassword = await hash(password);
+
+      const createdUser = await createUser(username, hashedPassword);
+
+      return createdUser;
     }),
 
   me: protectedProcedure.query(({ ctx }) => {

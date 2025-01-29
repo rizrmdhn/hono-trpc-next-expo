@@ -5,7 +5,7 @@ import { validateSessionToken } from "./utils";
 
 export const getCurrentSession = cache(async () => {
   const awaitedCookies = await cookies();
-  const token = awaitedCookies.get("session")?.value;
+  const token = awaitedCookies.get("token")?.value;
 
   if (!token) {
     return { session: null, user: null };

@@ -28,6 +28,8 @@
     "@rizrmdhn/eslint-config": "workspace:*",
     "@rizrmdhn/prettier-config": "workspace:*",
     "@rizrmdhn/tsconfig": "workspace:*",
+    "@trpc/server": "catalog:",
+    "@types/node": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
