@@ -1,5 +1,5 @@
 {
-  "name": "my-turborepo",
+  "name": "hono-trpc",
   "private": true,
   "scripts": {
     "build": "turbo build",
