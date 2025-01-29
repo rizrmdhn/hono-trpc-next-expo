@@ -2,6 +2,7 @@
   "name": "@rizrmdhn/web",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "pnpm with-env next build",
     "check": "pnpm run typecheck && pnpm run lint && pnpm run format",
@@ -16,6 +17,7 @@
   },
   "dependencies": {
     "@rizrmdhn/api": "workspace:*",
+    "@rizrmdhn/auth": "workspace:*",
     "@rizrmdhn/db": "workspace:*",
     "@rizrmdhn/validators": "workspace:*",
     "@t3-oss/env-nextjs": "^0.12.0",

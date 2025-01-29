@@ -2,7 +2,7 @@ import { statusRouter } from "./router/status";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
-  status: statusRouter,
+  health: statusRouter,
 });
 
 // export type definition of API

@@ -1,9 +1,14 @@
-import type { TRPCRouterRecord } from "@trpc/server";
+import { version as trpcVersion } from "@trpc/server/package.json";
 
-import { publicProcedure } from "../trpc";
+import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const statusRouter = {
-  health: publicProcedure.query(() => {
-    return { status: "OK" };
+export const statusRouter = createTRPCRouter({
+  get: publicProcedure.query(() => {
+    return {
+      trpcVersion,
+      nodeVersion: process.version,
+      uptime: process.uptime(),
+      dbVersion: "1.0.0",
+    };
   }),
-} satisfies TRPCRouterRecord;
+});

@@ -1,7 +1,6 @@
 "use client";
 
-import type { QueryClient } from "@tanstack/react-query";
-import { QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider, type QueryClient } from "@tanstack/react-query";
 import {
   httpBatchLink,
   loggerLink,
@@ -9,13 +8,13 @@ import {
   unstable_httpBatchStreamLink,
 } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
-import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
+import { type inferRouterInputs, type inferRouterOutputs } from "@trpc/server";
 import { useState } from "react";
-import type { ReactNode } from "react";
 import SuperJSON from "superjson";
 
-import type { AppRouter } from "@rizrmdhn/api";
+import { type AppRouter } from "@rizrmdhn/api";
 import { createQueryClient } from "./query-client";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 let clientQueryClientSingleton: QueryClient | undefined = undefined;
 const getQueryClient = () => {
@@ -43,7 +42,7 @@ export type RouterInputs = inferRouterInputs<AppRouter>;
  */
 export type RouterOutputs = inferRouterOutputs<AppRouter>;
 
-export function TRPCReactProvider({ children }: { children: ReactNode }) {
+export function TRPCReactProvider(props: { children: React.ReactNode }) {
   const queryClient = getQueryClient();
 
   const [trpcClient] = useState(() =>
@@ -84,7 +83,10 @@ export function TRPCReactProvider({ children }: { children: ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       <api.Provider client={trpcClient} queryClient={queryClient}>
-        {children}
+        {props.children}
+        {process.env.NODE_ENV === "development" && (
+          <ReactQueryDevtools initialIsOpen={false} />
+        )}
       </api.Provider>
     </QueryClientProvider>
   );
@@ -92,5 +94,6 @@ export function TRPCReactProvider({ children }: { children: ReactNode }) {
 
 function getBaseUrl() {
   if (typeof window !== "undefined") return window.location.origin;
-  return `http://localhost:${process.env.SERVER_PORT ?? 3000}`;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return `http://localhost:${process.env.PORT ?? 3000}`;
 }

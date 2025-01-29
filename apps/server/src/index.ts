@@ -22,11 +22,6 @@ app.use(
   "/trpc/*",
   trpcServer({
     router: appRouter,
-    createContext: (c) => ({
-      req: c.req,
-      headers: Object.fromEntries(c.req.headers.entries()),
-      context: c,
-    }),
   })
 );
 

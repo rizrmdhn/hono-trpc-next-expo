@@ -13,13 +13,13 @@ catalogs:
       specifier: ^5.65.1
       version: 5.65.1
     '@trpc/client':
-      specifier: ^11.0.0-rc.730
+      specifier: ^11.0.0-rc.708
       version: 11.0.0-rc.730
     '@trpc/react-query':
-      specifier: ^11.0.0-rc.730
+      specifier: ^11.0.0-rc.708
       version: 11.0.0-rc.730
     '@trpc/server':
-      specifier: ^11.0.0-rc.730
+      specifier: ^11.0.0-rc.708
       version: 11.0.0-rc.730
     '@types/node':
       specifier: ^22.12.0
@@ -112,6 +112,9 @@ importers:
       '@rizrmdhn/api':
         specifier: workspace:*
         version: link:../../packages/api
+      '@rizrmdhn/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
       '@rizrmdhn/db':
         specifier: workspace:*
         version: link:../../packages/db
