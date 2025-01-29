@@ -1,0 +1,32 @@
+{
+  "name": "@rizrmdhn/db",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "sort:package": "pnpm dlx sort-package-json"
+  },
+  "devDependencies": {
+    "@rizrmdhn/eslint-config": "workspace:*",
+    "@rizrmdhn/prettier-config": "workspace:*",
+    "@rizrmdhn/tsconfig": "workspace:*",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@rizrmdhn/prettier-config",
+  "dependencies": {
+    "drizzle-orm": "^0.39.0",
+    "pg": "^8.13.1"
+  }
+}
