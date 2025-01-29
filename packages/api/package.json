@@ -21,6 +21,9 @@
   },
   "prettier": "@rizrmdhn/prettier-config",
   "dependencies": {
+    "@rizrmdhn/auth": "workspace:*",
+    "@rizrmdhn/db": "workspace:*",
+    "@rizrmdhn/validators": "workspace:*",
     "@trpc/server": "catalog:",
     "superjson": "^2.2.2",
     "zod": "catalog:"

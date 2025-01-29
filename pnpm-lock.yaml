@@ -128,6 +128,15 @@ importers:
 
   packages/api:
     dependencies:
+      '@rizrmdhn/auth':
+        specifier: workspace:*
+        version: link:../auth
+      '@rizrmdhn/db':
+        specifier: workspace:*
+        version: link:../db
+      '@rizrmdhn/validators':
+        specifier: workspace:*
+        version: link:../validators
       '@trpc/server':
         specifier: 'catalog:'
         version: 11.0.0-rc.730(typescript@5.7.3)
@@ -215,6 +224,48 @@ importers:
       drizzle-kit:
         specifier: ^0.30.3
         version: 0.30.3
+      eslint:
+        specifier: 'catalog:'
+        version: 9.19.0(jiti@1.21.7)
+      prettier:
+        specifier: 'catalog:'
+        version: 3.4.2
+      typescript:
+        specifier: 'catalog:'
+        version: 5.7.3
+
+  packages/queries:
+    devDependencies:
+      '@rizrmdhn/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint
+      '@rizrmdhn/prettier-config':
+        specifier: workspace:*
+        version: link:../../tooling/prettier
+      '@rizrmdhn/tsconfig':
+        specifier: workspace:*
+        version: link:../../tooling/typescript
+      eslint:
+        specifier: 'catalog:'
+        version: 9.19.0(jiti@1.21.7)
+      prettier:
+        specifier: 'catalog:'
+        version: 3.4.2
+      typescript:
+        specifier: 'catalog:'
+        version: 5.7.3
+
+  packages/types:
+    devDependencies:
+      '@rizrmdhn/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint
+      '@rizrmdhn/prettier-config':
+        specifier: workspace:*
+        version: link:../../tooling/prettier
+      '@rizrmdhn/tsconfig':
+        specifier: workspace:*
+        version: link:../../tooling/typescript
       eslint:
         specifier: 'catalog:'
         version: 9.19.0(jiti@1.21.7)
