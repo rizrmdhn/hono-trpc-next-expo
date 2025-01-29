@@ -33,7 +33,8 @@
   "prettier": "@rizrmdhn/prettier-config",
   "dependencies": {
     "drizzle-orm": "^0.39.0",
-    "pg": "^8.13.1"
+    "pg": "^8.13.1",
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "@rizrmdhn/eslint-config": "workspace:*",
