@@ -147,6 +147,9 @@ importers:
       '@rizrmdhn/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
+      dotenv-cli:
+        specifier: ^8.0.0
+        version: 8.0.0
       eslint:
         specifier: 'catalog:'
         version: 9.19.0(jiti@1.21.7)
@@ -172,6 +175,9 @@ importers:
       '@rizrmdhn/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
+      dotenv-cli:
+        specifier: ^8.0.0
+        version: 8.0.0
       eslint:
         specifier: 'catalog:'
         version: 9.19.0(jiti@1.21.7)
@@ -200,6 +206,9 @@ importers:
       '@rizrmdhn/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
+      dotenv-cli:
+        specifier: ^8.0.0
+        version: 8.0.0
       eslint:
         specifier: 'catalog:'
         version: 9.19.0(jiti@1.21.7)
@@ -225,6 +234,9 @@ importers:
       '@rizrmdhn/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
+      dotenv-cli:
+        specifier: ^8.0.0
+        version: 8.0.0
       eslint:
         specifier: 'catalog:'
         version: 9.19.0(jiti@1.21.7)
@@ -271,6 +283,9 @@ importers:
       '@types/eslint__js':
         specifier: 8.42.3
         version: 8.42.3
+      dotenv-cli:
+        specifier: ^8.0.0
+        version: 8.0.0
       eslint:
         specifier: 'catalog:'
         version: 9.19.0(jiti@1.21.7)
@@ -281,7 +296,11 @@ importers:
         specifier: 'catalog:'
         version: 5.7.3
 
-  tooling/github: {}
+  tooling/github:
+    devDependencies:
+      dotenv-cli:
+        specifier: ^8.0.0
+        version: 8.0.0
 
   tooling/prettier:
     dependencies:
@@ -298,6 +317,9 @@ importers:
       '@rizrmdhn/tsconfig':
         specifier: workspace:*
         version: link:../typescript
+      dotenv-cli:
+        specifier: ^8.0.0
+        version: 8.0.0
       typescript:
         specifier: 'catalog:'
         version: 5.7.3
@@ -323,6 +345,9 @@ importers:
       '@rizrmdhn/tsconfig':
         specifier: workspace:*
         version: link:../typescript
+      dotenv-cli:
+        specifier: ^8.0.0
+        version: 8.0.0
       eslint:
         specifier: 'catalog:'
         version: 9.19.0(jiti@1.21.7)
@@ -333,7 +358,11 @@ importers:
         specifier: 'catalog:'
         version: 5.7.3
 
-  tooling/typescript: {}
+  tooling/typescript:
+    devDependencies:
+      dotenv-cli:
+        specifier: ^8.0.0
+        version: 8.0.0
 
 packages:
 
