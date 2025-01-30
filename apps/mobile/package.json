@@ -13,7 +13,8 @@
     "ios": "expo run:ios",
     "lint": "eslint",
     "sort:package": "pnpm dlx sort-package-json",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "ui-add-mobile": "pnpm dlx @react-native-reusables/cli@latest add && prettier . --write --list-different"
   },
   "jest": {
     "preset": "jest-expo"

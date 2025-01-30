@@ -20,6 +20,7 @@
     "postinstall": "pnpm lint:ws",
     "typecheck": "turbo run typecheck",
     "ui-add": "turbo run ui-add",
+    "ui-add-mobile": "turbo run ui-add-mobile",
     "sort:package": "turbo run sort:package"
   },
   "devDependencies": {

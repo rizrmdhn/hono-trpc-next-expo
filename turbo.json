@@ -44,6 +44,10 @@
       "cache": false,
       "interactive": true
     },
+    "ui-add-mobile": {
+      "cache": false,
+      "interactive": true
+    },
     "sort:package": {
       "cache": false
     }
