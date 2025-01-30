@@ -6,7 +6,8 @@
   "scripts": {
     "android": "expo run:android",
     "clean": "git clean -xdf .cache .expo .turbo android ios node_modules",
-    "dev": "expo start --android",
+    "dev": "expo start",
+    "dev:android": "expo start --android",
     "dev:ios": "expo start --ios",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "ios": "expo run:ios",
@@ -20,6 +21,7 @@
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/bottom-tabs": "^7.2.0",
+    "@react-navigation/elements": "^2.2.5",
     "@react-navigation/native": "^7.0.14",
     "@rizrmdhn/api": "workspace:*",
     "@tanstack/react-query": "catalog:",
@@ -42,9 +44,9 @@
     "expo-system-ui": "~4.0.7",
     "expo-web-browser": "~14.0.2",
     "nativewind": "^4.1.23",
-    "react": "catalog:react19",
+    "react": "catalog:react18",
     "react-compiler-runtime": "19.0.0-beta-27714ef-20250124",
-    "react-dom": "catalog:react19",
+    "react-dom": "catalog:react18",
     "react-native": "0.76.6",
     "react-native-gesture-handler": "~2.20.2",
     "react-native-reanimated": "~3.16.1",
@@ -56,19 +58,21 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@babel/runtime": "^7.26.7",
     "@rizrmdhn/api": "workspace:*",
     "@rizrmdhn/eslint-config": "workspace:*",
     "@rizrmdhn/prettier-config": "workspace:*",
     "@rizrmdhn/tailwind-config": "workspace:*",
     "@rizrmdhn/tsconfig": "workspace:*",
     "@types/jest": "^29.5.12",
-    "@types/react": "catalog:react19",
+    "@types/react": "catalog:react18",
     "@types/react-test-renderer": "^18.3.0",
-    "eslint": "^8.57.0",
-    "eslint-config-expo": "~8.0.1",
+    "eslint": "catalog:",
     "jest": "^29.2.1",
     "jest-expo": "~52.0.3",
+    "prettier": "catalog:",
     "react-test-renderer": "18.3.1",
-    "typescript": "^5.3.3"
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:"
   }
 }
