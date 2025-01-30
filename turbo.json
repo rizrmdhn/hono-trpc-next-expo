@@ -50,13 +50,10 @@
   },
   "globalEnv": [
     "POSTGRES_URL",
-    "AUTH_DISCORD_ID",
-    "AUTH_DISCORD_SECRET",
-    "AUTH_REDIRECT_PROXY_URL",
-    "AUTH_SECRET",
     "PORT",
     "SERVER_PORT",
     "BACKEND_BASE_URL",
+    "NEXT_PUBLIC_BACKEND_BASE_URL",
     "JWT_SECRET_KEY"
   ],
   "globalPassThroughEnv": [

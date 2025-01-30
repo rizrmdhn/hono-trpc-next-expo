@@ -8,7 +8,7 @@
     ".": {
       "default": "./src/index.ts"
     },
-    "./session": "./src/session.ts",
+    "./sessions": "./src/sessions.ts",
     "./utils": "./src/utils.ts"
   },
   "scripts": {

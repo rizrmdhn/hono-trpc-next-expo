@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { TRPCReactProvider } from "@/trpc/react";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
+import { cn } from "@rizrmdhn/ui";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { Toaster } from "@rizrmdhn/ui/toast";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,11 +19,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(
+          "min-h-screen bg-background font-sans text-foreground antialiased",
+          GeistSans.variable,
+          GeistMono.variable
+        )}
       >
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          {children}
+          <Toaster position="bottom-right" richColors />
+        </TRPCReactProvider>
       </body>
     </html>
   );

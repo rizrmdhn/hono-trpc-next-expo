@@ -10,7 +10,6 @@ import type {
 import type { ZodType, ZodTypeDef } from "zod";
 import * as React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { cn } from "@rizrmdhn/ui";
 import { Slot } from "radix-ui";
 import {
   useForm as __useForm,
@@ -18,6 +17,8 @@ import {
   FormProvider,
   useFormContext,
 } from "react-hook-form";
+
+import { cn } from "@rizrmdhn/ui";
 
 import { Label } from "./label";
 

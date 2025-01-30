@@ -36,7 +36,7 @@ const isomorphicGetSession = async (headers: Headers) => {
     const sessionToken = cookieHeader
       .split(";")
       .map((c) => c.trim())
-      .find((c) => c.startsWith("session="))
+      .find((c) => c.startsWith("token="))
       ?.split("=")[1];
 
     if (sessionToken) {
