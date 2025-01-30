@@ -1,6 +1,10 @@
 import { api } from "./api";
 
 export const useUser = () => {
-  const { data: session } = api.auth.me.useQuery();
-  return session ?? null;
+  const { data: session, isSuccess } = api.auth.me.useQuery();
+  return {
+    session,
+    isSuccess,
+    isAuthenticated: !!session,
+  };
 };

@@ -19,8 +19,10 @@ export const getBaseUrl = () => {
   if (!localhost) {
     // return "https://turbo.t3.gg";
     throw new Error(
-      "Failed to get localhost. Please point to your production server.",
+      "Failed to get localhost. Please point to your production server."
     );
   }
-  return process.env.BACKEND_BASE_URL;
+
+  // eslint-disable-next-line turbo/no-undeclared-env-vars
+  return process.env.EXPO_PUBLIC_API_URL as string;
 };
