@@ -4,7 +4,7 @@ import { httpBatchLink, loggerLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
 import superjson from "superjson";
 
-import type { AppRouter } from "@rizrmdhn/api/src/root";
+import type { AppRouter } from "@rizrmdhn/api";
 
 import { getBaseUrl } from "./base-url";
 import { getToken } from "./session-store";
@@ -13,17 +13,14 @@ import { getToken } from "./session-store";
  * A set of typesafe hooks for consuming your API.
  */
 export const api = createTRPCReact<AppRouter>();
-export { type RouterInputs, type RouterOutputs } from "@rizrmdhn/api/src";
+export { type RouterInputs, type RouterOutputs } from "@rizrmdhn/api";
 
 /**
  * A wrapper for your app that provides the TRPC context.
  * Use only in _app.tsx
  */
 export function TRPCProvider(props: { children: React.ReactNode }) {
-  // Initialize the query client
   const [queryClient] = useState(() => new QueryClient());
-
-  // Initialize the trpc client
   const [trpcClient] = useState(() =>
     api.createClient({
       links: [
@@ -51,9 +48,10 @@ export function TRPCProvider(props: { children: React.ReactNode }) {
   );
 
   return (
-    // Make sure QueryClientProvider wraps the api.Provider
-    <QueryClientProvider client={queryClient}>
-      <api.Provider client={trpcClient}>{props.children}</api.Provider>
-    </QueryClientProvider>
+    <api.Provider client={trpcClient} queryClient={queryClient}>
+      <QueryClientProvider client={queryClient}>
+        {props.children}
+      </QueryClientProvider>
+    </api.Provider>
   );
 }
