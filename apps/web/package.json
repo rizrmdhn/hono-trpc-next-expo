@@ -16,6 +16,7 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
+    "@node-rs/argon2": "^2.0.2",
     "@rizrmdhn/api": "workspace:*",
     "@rizrmdhn/auth": "workspace:*",
     "@rizrmdhn/db": "workspace:*",

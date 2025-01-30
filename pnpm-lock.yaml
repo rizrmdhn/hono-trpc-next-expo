@@ -23,7 +23,7 @@ catalogs:
       version: 11.0.0-rc.730
     '@types/node':
       specifier: ^22.12.0
-      version: 20.17.16
+      version: 22.12.0
     eslint:
       specifier: ^9.19.0
       version: 9.19.0
@@ -109,6 +109,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@node-rs/argon2':
+        specifier: ^2.0.2
+        version: 2.0.2
       '@rizrmdhn/api':
         specifier: workspace:*
         version: link:../../packages/api

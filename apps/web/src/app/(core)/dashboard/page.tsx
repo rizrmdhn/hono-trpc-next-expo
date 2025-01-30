@@ -4,7 +4,7 @@ import { api } from "@/trpc/react";
 import Image from "next/image";
 
 export default function Dashboard() {
-  const { data } = api.health.get.useQuery();
+  const [data] = api.health.get.useSuspenseQuery();
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -54,22 +54,20 @@ export default function Dashboard() {
           </a>
         </div>
 
-        {data && (
-          <div className="flex flex-col gap-2 text-sm">
-            <h2 className="text-center sm:text-left">Status</h2>
-            <ul className="list-inside list-disc text-center sm:text-left">
-              <li>
-                <strong>Node.js:</strong> {data.nodeVersion ?? "Unknown"}
-              </li>
-              <li>
-                <strong>TRPC:</strong> {data.trpcVersion ?? "Unknown"}
-              </li>
-              <li>
-                <strong>Database:</strong> {data.dbVersion ?? "Unknown"}
-              </li>
-            </ul>
-          </div>
-        )}
+        <div className="flex flex-col gap-2 text-sm">
+          <h2 className="text-center sm:text-left">Status</h2>
+          <ul className="list-inside list-disc text-center sm:text-left">
+            <li>
+              <strong>Node.js:</strong> {data.nodeVersion}
+            </li>
+            <li>
+              <strong>TRPC:</strong> {data.trpcVersion}
+            </li>
+            <li>
+              <strong>Database:</strong> {data.dbVersion}
+            </li>
+          </ul>
+        </div>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <a
