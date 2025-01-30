@@ -1,15 +1,19 @@
 {
   "name": "@rizrmdhn/mobile",
-  "main": "expo-router/entry",
   "version": "1.0.0",
+  "private": true,
+  "main": "expo-router/entry",
   "scripts": {
-    "start": "expo start",
-    "reset-project": "node ./scripts/reset-project.js",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "test": "jest --watchAll",
-    "lint": "expo lint"
+    "android": "expo run:android",
+    "clean": "git clean -xdf .cache .expo .turbo android ios node_modules",
+    "dev": "expo start",
+    "dev:android": "expo start --android",
+    "dev:ios": "expo start --ios",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "ios": "expo run:ios",
+    "lint": "eslint",
+    "sort:package": "pnpm dlx sort-package-json",
+    "typecheck": "tsc --noEmit"
   },
   "jest": {
     "preset": "jest-expo"
@@ -32,9 +36,9 @@
     "expo-symbols": "~0.2.1",
     "expo-system-ui": "~4.0.7",
     "expo-web-browser": "~14.0.2",
-    "react": "18.3.1",
+    "react": "catalog:react19",
     "react-compiler-runtime": "19.0.0-beta-27714ef-20250124",
-    "react-dom": "18.3.1",
+    "react-dom": "catalog:react19",
     "react-native": "0.76.6",
     "react-native-gesture-handler": "~2.20.2",
     "react-native-reanimated": "~3.16.1",
@@ -45,8 +49,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@rizrmdhn/api": "workspace:*",
+    "@rizrmdhn/eslint-config": "workspace:*",
+    "@rizrmdhn/prettier-config": "workspace:*",
+    "@rizrmdhn/tailwind-config": "workspace:*",
+    "@rizrmdhn/tsconfig": "workspace:*",
     "@types/jest": "^29.5.12",
-    "@types/react": "~18.3.12",
+    "@types/react": "catalog:react19",
     "@types/react-test-renderer": "^18.3.0",
     "eslint": "^8.57.0",
     "eslint-config-expo": "~8.0.1",
@@ -54,6 +63,5 @@
     "jest-expo": "~52.0.3",
     "react-test-renderer": "18.3.1",
     "typescript": "^5.3.3"
-  },
-  "private": true
+  }
 }
