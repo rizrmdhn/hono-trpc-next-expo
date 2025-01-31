@@ -5,9 +5,13 @@ import { Text } from "@/components/ui/text";
 import { Button } from "@/components/ui/button";
 import useLogout from "@/hooks/useLogout";
 import LoaderSpinner from "@/components/loader-spinner";
+import { api } from "@/utils/api";
 
 export default function DashboardScreen() {
   const { logout, isLoading } = useLogout();
+
+  const { data } = api.health.get.useQuery();
+
   return (
     <SafeAreaView className="bg-background w-full h-full">
       <ScrollView className="flex-1 bg-gray-100">
@@ -33,15 +37,27 @@ export default function DashboardScreen() {
             </View>
           </View>
 
-          {/* Recent Activity */}
+          {/* Server Status */}
           <View className="p-4 bg-white rounded-lg">
-            <Text className="text-xl font-bold mb-4">Recent Activity</Text>
-            {[1, 2, 3].map((item) => (
-              <View key={item} className="py-2 border-b border-gray-200">
-                <Text className="font-medium">Activity {item}</Text>
-                <Text className="text-gray-600 text-sm">2 hours ago</Text>
-              </View>
-            ))}
+            <Text className="text-xl font-bold mb-4">Server Status</Text>
+            <View className="py-2 border-b border-gray-200">
+              <Text className="font-medium">Node.js </Text>
+              <Text className="text-gray-600 text-sm">
+                {data?.nodeVersion ?? ""}
+              </Text>
+            </View>
+            <View className="py-2 border-b border-gray-200">
+              <Text className="font-medium">TRPC </Text>
+              <Text className="text-gray-600 text-sm">
+                {data?.trpcVersion ?? ""}
+              </Text>
+            </View>
+            <View className="py-2 border-b border-gray-200">
+              <Text className="font-medium">Database </Text>
+              <Text className="text-gray-600 text-sm">
+                {data?.dbVersion ?? ""}
+              </Text>
+            </View>
           </View>
 
           {/* Logout Button */}

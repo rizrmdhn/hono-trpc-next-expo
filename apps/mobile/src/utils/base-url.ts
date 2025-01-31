@@ -23,6 +23,5 @@ export const getBaseUrl = () => {
     );
   }
 
-  // eslint-disable-next-line turbo/no-undeclared-env-vars
-  return process.env.EXPO_PUBLIC_API_URL as string;
+  return `http://${localhost}:3333`;
 };
