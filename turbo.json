@@ -44,6 +44,10 @@
       "cache": false,
       "interactive": true
     },
+    "ui-add-mobile": {
+      "cache": false,
+      "interactive": true
+    },
     "sort:package": {
       "cache": false
     }
@@ -53,6 +57,7 @@
     "PORT",
     "SERVER_PORT",
     "BACKEND_BASE_URL",
+    "EXPO_PUBLIC_API_URL",
     "NEXT_PUBLIC_BACKEND_BASE_URL",
     "JWT_SECRET_KEY"
   ],

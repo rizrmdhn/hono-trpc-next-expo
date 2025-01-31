@@ -9,7 +9,9 @@
     "db:studio": "turbo -F @rizrmdhn/db studio",
     "dev": "turbo watch dev --continue",
     "dev:next": "turbo watch dev -F @rizrmdhn/web...",
-    "dev:server": "turbo watch dev -F @rizrmdhn/server",
+    "dev:server": "turbo watch dev -F @rizrmdhn/server...",
+    "dev:web": "turbo watch dev -F @rizrmdhn/server -F @rizrmdhn/web",
+    "dev:android": "turbo watch dev -F @rizrmdhn/mobile -F @rizrmdhn/server",
     "format": "turbo run format --continue -- --cache --cache-location .cache/.prettiercache",
     "format:fix": "turbo run format --continue -- --write --cache --cache-location .cache/.prettiercache",
     "lint": "turbo run lint --continue -- --cache --cache-location .cache/.eslintcache",
@@ -18,6 +20,7 @@
     "postinstall": "pnpm lint:ws",
     "typecheck": "turbo run typecheck",
     "ui-add": "turbo run ui-add",
+    "ui-add-mobile": "turbo run ui-add-mobile",
     "sort:package": "turbo run sort:package"
   },
   "devDependencies": {

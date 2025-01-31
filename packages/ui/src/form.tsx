@@ -39,7 +39,9 @@ const useForm = <
   return form;
 };
 
-const Form = FormProvider;
+const Form = FormProvider as unknown as React.FC<{
+  children: React.ReactNode;
+}>;
 
 interface FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
