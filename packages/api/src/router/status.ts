@@ -21,6 +21,7 @@ export const statusRouter = createTRPCRouter({
   get: publicProcedure.query(() => {
     const { nodeVersion, uptime } = getProcessInfo();
     return {
+      status: "ok",
       trpcVersion,
       nodeVersion,
       uptime,
