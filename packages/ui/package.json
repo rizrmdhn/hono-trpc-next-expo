@@ -45,6 +45,7 @@
     "@rizrmdhn/tailwind-config": "workspace:*",
     "@rizrmdhn/tsconfig": "workspace:*",
     "@types/react": "catalog:react18",
+    "@types/react-dom": "catalog:react18",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "react": "catalog:react18",

@@ -62,7 +62,6 @@ const FormField = <
 }: ControllerProps<TFieldValues, TName>) => {
   return (
     <FormFieldContext.Provider value={{ name: props.name }}>
-      {/* @ts-expect-error - Controller has incompatible props with current usage */}
       <Controller {...props} />
     </FormFieldContext.Provider>
   );

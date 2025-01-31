@@ -26,6 +26,7 @@
     "jose": "^5.9.6",
     "next": "15.1.6",
     "react": "catalog:react18",
+    "react-dom": "catalog:react18",
     "zod": "^3.24.1"
   },
   "devDependencies": {

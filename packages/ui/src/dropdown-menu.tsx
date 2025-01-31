@@ -33,7 +33,6 @@ const DropdownMenuSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    {/* @ts-expect-error - ChevronDownIcon has incompatible props with current usage */}
     <ChevronRightIcon className="ml-auto size-4" />
   </DropdownMenuPrimitive.SubTrigger>
 ));
@@ -108,7 +107,6 @@ const DropdownMenuCheckboxItem = React.forwardRef<
   >
     <span className="absolute left-2 flex size-3.5 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        {/* @ts-expect-error - CheckIcon has incompatible props with current usage */}
         <CheckIcon className="size-4" />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
@@ -132,7 +130,6 @@ const DropdownMenuRadioItem = React.forwardRef<
   >
     <span className="absolute left-2 flex size-3.5 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        {/* @ts-expect-error - DotFilledIcon has incompatible props with current usage */}
         <DotFilledIcon className="size-4 fill-current" />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
