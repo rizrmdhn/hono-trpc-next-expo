@@ -25,7 +25,7 @@
     "@t3-oss/env-nextjs": "^0.12.0",
     "jose": "^5.9.6",
     "next": "15.1.6",
-    "react": "catalog:react19",
+    "react": "catalog:react18",
     "zod": "^3.24.1"
   },
   "devDependencies": {
@@ -33,7 +33,7 @@
     "@rizrmdhn/prettier-config": "workspace:*",
     "@rizrmdhn/tsconfig": "workspace:*",
     "@types/node": "catalog:",
-    "@types/react": "catalog:react19",
+    "@types/react": "catalog:react18",
     "dotenv-cli": "^8.0.0",
     "eslint": "catalog:",
     "prettier": "catalog:",

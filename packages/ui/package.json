@@ -44,15 +44,15 @@
     "@rizrmdhn/prettier-config": "workspace:*",
     "@rizrmdhn/tailwind-config": "workspace:*",
     "@rizrmdhn/tsconfig": "workspace:*",
-    "@types/react": "catalog:react19",
+    "@types/react": "catalog:react18",
     "eslint": "catalog:",
     "prettier": "catalog:",
-    "react": "catalog:react19",
+    "react": "catalog:react18",
     "typescript": "catalog:",
     "zod": "catalog:"
   },
   "peerDependencies": {
-    "react": "catalog:react19",
+    "react": "catalog:react18",
     "zod": "catalog:"
   }
 }

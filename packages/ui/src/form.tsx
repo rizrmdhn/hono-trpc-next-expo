@@ -39,7 +39,9 @@ const useForm = <
   return form;
 };
 
-const Form = FormProvider;
+const Form = FormProvider as unknown as React.FC<{
+  children: React.ReactNode;
+}>;
 
 interface FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
@@ -60,6 +62,7 @@ const FormField = <
 }: ControllerProps<TFieldValues, TName>) => {
   return (
     <FormFieldContext.Provider value={{ name: props.name }}>
+      {/* @ts-expect-error - Controller has incompatible props with current usage */}
       <Controller {...props} />
     </FormFieldContext.Provider>
   );
