@@ -50,6 +50,7 @@
     "dotenv-cli": "^8.0.0",
     "jiti": "^1.21.7",
     "postcss": "^8.5.1",
+    "postcss-load-config": "^6.0.1",
     "tailwindcss": "catalog:",
     "typescript": "catalog:"
   }

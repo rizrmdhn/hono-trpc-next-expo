@@ -27,6 +27,7 @@
     "@rizrmdhn/prettier-config": "workspace:*",
     "@rizrmdhn/tsconfig": "workspace:*",
     "@types/eslint__js": "8.42.3",
+    "@types/node": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
