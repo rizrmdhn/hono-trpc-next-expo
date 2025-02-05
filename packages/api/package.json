@@ -27,6 +27,7 @@
     "@rizrmdhn/queries": "workspace:*",
     "@rizrmdhn/validators": "workspace:*",
     "@trpc/server": "catalog:",
+    "postgres": "^3.4.5",
     "superjson": "^2.2.2",
     "zod": "catalog:"
   },
