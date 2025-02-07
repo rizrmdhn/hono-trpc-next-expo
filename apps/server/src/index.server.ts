@@ -34,7 +34,7 @@ const server = serve({
 });
 
 // Graceful shutdown handling
-const shutdown = async () => {
+const shutdown = () => {
   console.log("\nReceived shutdown signal. Closing server...");
 
   try {
